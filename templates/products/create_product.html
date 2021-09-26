@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Crear Nuevo Producto</title>
+{%endblock%}
+
+{% block container %}
+    <div class="container">
+        <div class="row alert alert-success">
+            <h1 class="text-center">Crear un nuevo producto</h1>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <form method="POST" action="/products/new/">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="code" class="form-label">Código</label>
+                            <input type="text" class="form-control" id="code" name="code" aria-describedby="codeHelp">
+                            <div id="codeHelp" class="form-text">Código único del producto.</div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea type="text" class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="name" class="form-label">Valor</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="signo-pesos">$</span>
+                                <input type="number" class="form-control" placeholder="Valor" aria-describedby="signo-pesos" name="value">
+                            </div>
+                            
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="image" class="form-label">Imagen</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Almacenar</button>
+                    <a href="/products/" class="btn btn-danger">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
